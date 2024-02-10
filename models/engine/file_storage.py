@@ -17,6 +17,7 @@ from models.review import Review
 class FileStorage:
     __file_path = "file.json"
     __objects = {}
+
     classes = {
         "BaseModel": BaseModel,
         "User": User,
