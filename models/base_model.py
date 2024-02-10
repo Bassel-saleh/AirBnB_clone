@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-'''this module is base class for other classes to inherit from'''
+"""this module is base class for other classes to inherit from"""
+
 import uuid
 from datetime import datetime
 import models
 
 
 class BaseModel():
-    '''this is base class which all other subclasses inherit from
+    """this is base class which all other subclasses inherit from
 
     Attributes:
         id: basemodel id
@@ -18,10 +19,12 @@ class BaseModel():
         __str__(self)
         to_dict(self)
         __repr__(self)
-    '''
+    """
 
     def __init__(self, *args, **kwargs):
-        '''initiates class instances'''
+        """initiates class instances
+        and if kwargs are empty it creates a new one
+        """
 
         if kwargs:
             for key, value in kwargs.items():
