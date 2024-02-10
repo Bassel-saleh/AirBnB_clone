@@ -6,19 +6,19 @@ import models
 
 
 class BaseModel():
-    '''this is base class
-    which all other subclasses inherit from
+    '''this is base class which all other subclasses inherit from
+
     Attributes:
         id: basemodel id
         created_at: the datetime of creation
         updated_at: the datetime of updating
 
-        Methods:
-            __ini__(self, *args, **kwargs)
-            __str__(self)
-            to_dict(self)
-            __repr__(self)
-            '''
+    Methods:
+        __ini__(self, *args, **kwargs)
+        __str__(self)
+        to_dict(self)
+        __repr__(self)
+    '''
 
     def __init__(self, *args, **kwargs):
         '''initiates class instances'''
