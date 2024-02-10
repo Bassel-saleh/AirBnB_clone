@@ -4,9 +4,20 @@ import uuid
 from datetime import datetime
 import models
 
+
 class BaseModel():
     '''this is base class
-    '''
+    which all other subclasses inherit from
+    Attributes:
+        id: basemodel id
+        created_at: the datetime of creation
+        updated_at: the datetime of updating
+
+        Methods:
+            __ini__(self, *args, **kwargs)
+            __str__(self)
+            to_dict(self)
+            '''
 
     def __init__(self, *args, **kwargs):
         '''initiates class instances'''
@@ -31,13 +42,16 @@ class BaseModel():
             storage.new(self)
 
     def __str__(self):
+        '''return representation of an object'''
         return "[{}] ({}) {}".format(self.__class__.__name__,
                 self.id, self.__dict__)
 
     def save(self):
+        '''save the current state of an object'''
         self.updated_at = datetime.now()
 
     def to_dict(self):
+        '''convert an instance into dictionary representation'''
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
         obj_dict['created_at'] = self.created_at.isoformat()

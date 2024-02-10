@@ -1,16 +1,20 @@
 #!/usr/bin/python3
-
+''' console main operation file '''
 import cmd
 import sys
 from models.base_model import BaseModel
 from models.user import User
 from models import storage
 
+
 class HBNBCommand(cmd.Cmd):
+    '''subclass for cmd class'''
+
     prompt = "(hbnb) "
 
     def do_create(self, arg):
-        """Creates a new instance of BaseModel, saves it (to the JSON file), and prints the id"""
+        """Creates a new instance of BaseModel,
+        saves it (to the JSON file), and prints the id"""
         if not arg:
             print("** class name missing **")
             return
@@ -22,7 +26,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, arg):
-        """Prints the string representation of an instance based on the class name and id"""
+        """Prints the string representation of an instance
+        based on the class name and id"""
         if not arg:
             print("** class name missing **")
             return
@@ -59,7 +64,8 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, arg):
-        """Prints all string representation of all instances based or not on the class name"""
+        """Prints all string representation of
+        all instances based or not on the class name"""
         args = arg.split()
         if not arg:
             objs = storage.all().values()
@@ -71,7 +77,8 @@ class HBNBCommand(cmd.Cmd):
         print(objs)
 
     def do_update(self, arg):
-        """Updates an instance based on the class name and id by adding or updating attribute"""
+        """Updates an instance based on the class name and
+        id by adding or updating attribute"""
         if not arg:
             print("** class name missing **")
             return
@@ -102,6 +109,7 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def emptyline(self):
+        """does nothing only for pressing enter on empty line"""
         pass
 
     def do_EOF(self, arg):
@@ -113,9 +121,6 @@ class HBNBCommand(cmd.Cmd):
         """Quits the interpreter"""
         raise SystemExit
 
+
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        commands = ' '.join(sys.argv[1:])
-        HBNBCommand().onecmd(commands)
-    else:
-        HBNBCommand().cmdloop()
+    HBNBCommand().cmdloop()
