@@ -1,8 +1,16 @@
 #!/usr/bin/python3
+"""
+city module
+inherited from BaseModel
+"""
 from models.base_model import BaseModel
 
+
 class City(BaseModel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.state_id = kwargs.get('state_id', "")
-        self.name = kwargs.get('name', "")
+    """city model
+    Attributes:
+        state_id (str) -> State.id
+        name (str) -> name of the city
+    """
+    name = ""
+    state_id = ""

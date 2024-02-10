@@ -1,9 +1,19 @@
 #!/usr/bin/python3
+"""
+Review model
+inherited from BaseModel
+"""
 from models.base_model import BaseModel
 
 class Review(BaseModel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.place_id = kwargs.get('place_id', "")
-        self.user_id = kwargs.get('user_id', "")
-        self.text = kwargs.get('text', "")
+    """
+    Review model
+
+    Attributes:
+        place_id: Place.id (place being reviewed)
+        user_id: User.id ( Reviwer)
+        text: The review text
+    """
+    place_id = ""
+    user_id = ""
+    text = ""
