@@ -43,8 +43,12 @@ class BaseModel():
 
     def __str__(self):
         '''return representation of an object'''
-        return "[{}] ({}) {}".format(self.__class__.__name__,
-                self.id, self.__dict__)
+        return ("[{}] ({}) {}".format(self.__class__.__name__,
+                self.id, self.__dict__))
+
+    def __repr__(self):
+        ''' returns string representation '''
+        return (self.__str__())
 
     def save(self):
         '''save the current state of an object'''
