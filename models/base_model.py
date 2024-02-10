@@ -57,6 +57,7 @@ class BaseModel():
     def save(self):
         '''save the current state of an object'''
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         '''convert an instance into dictionary representation'''

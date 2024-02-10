@@ -4,7 +4,6 @@
 """
 
 import json
-import os
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -26,7 +25,7 @@ class FileStorage:
         "Amenity": Amenity,
         "Place": Place,
         "Review": Review
-        }
+    }
 
     def all(self):
         """ Returns the dictionary objects """
@@ -37,19 +36,14 @@ class FileStorage:
         Args:
             obj(object) -> The object to add to __objects
         """
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        FileStorage.__objects[key] = obj
+        ocname = obj.__class__.__name__
+        FileStorage.__objects["{}.{}".format(ocname, obj.id)] = obj
 
     def save(self):
         """ serializes objects to the JSON file """
-        serialized_objects = {}
-        for key, obj in FileStorage.__objects.items():
-            serialized_objects[key] = obj.to_dict()
-        try:
-            with open(FileStorage.__file_path, 'w') as file:
-                json.dump(serialized_objects, file)
-        except Exception as e:
-            print("Error:", e)
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
+            d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
+            json.dump(d, f)
 
     def reload(self):
         """ deserializes the JSON file to __objects """
