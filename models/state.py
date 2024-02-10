@@ -1,8 +1,12 @@
 #!/usr/bin/python3
-
+"""state module
+inherited from BaseModel
+"""
 from models.base_model import BaseModel
 
 class State(BaseModel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.name = kwargs.get('name', "")
+    """State class
+    Attributes:
+        name(str) -> Name of the state
+    """
+    name = ""
